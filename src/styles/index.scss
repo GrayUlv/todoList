@@ -1,6 +1,13 @@
 @import '~bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300');
+body{
+    background-color:#F7F7F9;
+    font-family: 'Quicksand', sans-serif;
+}
 
-
+h1{
+    color:rgba(175,47,47,0.15);
+}
 /* 
 
     You can write your own styles here...
