@@ -7,11 +7,12 @@ import {Element} from './Element.jsx';
 // import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 //create your first component
 export class Home extends React.Component{
+    
     constructor(){
         super();
         this.state={"task":[]};
     }
-     handleClickNewTask(e){
+    handleClickNewTask(e){
         if(e.charCode == 13){
             let tempState = this.state;
             tempState.task.push(e.target.value);
@@ -20,10 +21,29 @@ export class Home extends React.Component{
             console.log(e.target.value);
         }
     }
+    
+    removeHandler(taskTitle) {
+        //console.log(taskTitle);
+        let tempState = this.state;
+        for (let i=0; i<tempState.task.length; i++) {
+            if (tempState.task[i] === taskTitle) {
+                tempState.task.splice(i, 1);
+            }
+        }
+        this.setState(tempState);
+    }
+    
     render(){
-        
+        var count=1;
         var listTasks= this.state.task.map((element, index) =>{
-        return <Element key={index} taskTitle={element}/>;});
+        return <Element 
+                key={index} 
+                taskTitle={element}
+                onRemove={this.removeHandler.bind(this)}
+            />;
+            
+        });
+        
         return (
             <div className="text-center mt-5">
                 <h1>todos</h1>
@@ -35,7 +55,7 @@ export class Home extends React.Component{
                         onKeyPress={(event) => this.handleClickNewTask(event)} />
                     </li>
                     {listTasks}
-            
+                    <li className="list-group-item">{this.state.task.length}</li>
                     <li className="list-group-item text-left folder1 "></li>
                     <li className="list-group-item text-left folder2 "></li>
                 </ul>

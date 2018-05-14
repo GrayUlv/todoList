@@ -21,6 +21,23 @@ h1{
     padding-left: 50px;
 }
 
+
+
+.list-group-item:hover, .list-group-item:focus {
+    z-index: 0;
+    text-decoration: none;
+}
+
+.list-group-item:hover .rightx, .list-group-item:focus .rightx {
+    display: inline-block;
+}
+
+.rightx {
+    float: right;
+    color: red;
+    display: none;
+}
+
 .folder1 {
     width: 98%;
     height: 6px;
